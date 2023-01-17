@@ -11,7 +11,7 @@ export const products = [{
     id: '123',
     name: 'Basil',
     price: '$26.00',
-    image: basilBottle,
+    imageName: basilBottle,
 }, {
     id: '234',
     name: 'Lemon',
