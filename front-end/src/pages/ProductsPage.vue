@@ -16,6 +16,6 @@ export default {
     return {
       products,
     }
-  }
+  },
 }
 </script>

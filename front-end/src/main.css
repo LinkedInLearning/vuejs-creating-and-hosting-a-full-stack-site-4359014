@@ -128,7 +128,7 @@ h1 {
 
 .grid-wrap {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 16px;
