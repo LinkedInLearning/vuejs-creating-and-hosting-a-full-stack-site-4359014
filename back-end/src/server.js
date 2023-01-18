@@ -1,5 +1,6 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
+import path from 'path';
 
 async function start() {
   const url = `mongodb+srv://fsv-server:Abc123@cluster0.vkql371.mongodb.net/?retryWrites=true&w=majority`
@@ -10,6 +11,8 @@ async function start() {
 
   const app = express();
   app.use(express.json());
+
+  app.use('/images', express.static(path.join(__dirname, '../assets')));
 
   app.get('/api/products', async (req, res) => {
     const products = await db.collection('products').find({}).toArray();
