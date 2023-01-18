@@ -1,14 +1,21 @@
 import express from 'express';
+import { MongoClient } from 'mongodb';
 import { cartItems as cartItemsRaw, products as productsRaw } from './temp-data';
 
 let cartItems = cartItemsRaw;
 let products = productsRaw;
 
+const url = `mongodb+srv://fsv-server:Abc123@cluster0.vkql371.mongodb.net/?retryWrites=true&w=majority`
+const client = new MongoClient(url);
+
 const app = express();
 app.use(express.json());
 
-app.get('/hello', (req, res) => {
-  res.send('Hello!');
+app.get('/hello', async (req, res) => {
+  await client.connect();
+  const db = client.db('fsv-db');
+  const products = await db.collection('products').find({}).toArray();
+  res.send(products);
 });
 
 app.get('/products', (req, res) => {
