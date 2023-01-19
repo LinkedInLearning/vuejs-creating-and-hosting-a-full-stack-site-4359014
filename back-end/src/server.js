@@ -12,6 +12,12 @@ async function start() {
   const app = express();
   app.use(express.json());
 
+  const publicPath = path.resolve(__dirname, '../dist');
+  const staticConf = { maxAge: '1y', etag: false };
+
+  app.use(express.static(publicPath, staticConf));
+// app.use('/', history());
+
   app.use('/images', express.static(path.join(__dirname, '../assets')));
 
   app.get('/api/products', async (req, res) => {
@@ -65,6 +71,10 @@ async function start() {
     const user = await db.collection('users').findOne({ id: req.params.userId });
     const populatedCart = await populateCartIds(user?.cartItems || []);
     res.json(populatedCart);
+  });
+
+  app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
   });
 
   app.listen(8000, () => {

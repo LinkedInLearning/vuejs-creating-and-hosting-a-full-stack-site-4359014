@@ -35,6 +35,9 @@ createApp(App)
   }, {
     path: '/:pathMatch(.*)*',
     component: NotFoundPage,
+  }, {
+    path: '/',
+    redirect: '/products'
   }]
 }))
 .mount('#app')
