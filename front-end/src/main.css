@@ -132,6 +132,12 @@ h1 {
   top: 16px;
 }
 
+.nav-buttons-wrap {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
 .cart-link {
   position: absolute;
   right: 16px;

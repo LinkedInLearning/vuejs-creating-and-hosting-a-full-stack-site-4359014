@@ -6,9 +6,9 @@
       <div class="product-details">
         <h1>{{ product.name }}</h1>
         <h3 class="price">{{ product.price }}</h3>
-        <button @click="addToCart" class="add-to-cart" v-if="!itemIsInCart">Add to cart</button>
-        <button class="grey-button" v-if="itemIsInCart">Item is already in cart</button>
-        <button class="sign-in" @click="signIn">Sign in to add to cart</button>
+        <button @click="addToCart" class="add-to-cart" v-if="user && !itemIsInCart">Add to cart</button>
+        <button class="grey-button" v-if="user && itemIsInCart">Item is already in cart</button>
+        <button class="sign-in" @click="signIn" v-if="!user">Sign in to add to cart</button>
       </div>
   </div>
   <div v-else>
@@ -23,6 +23,7 @@ import NotFoundPage from './NotFoundPage.vue';
 
 export default {
   name: "ProductDetailPage",
+  props: ['user'],
   data() {
     return {
       product: {},
@@ -32,6 +33,15 @@ export default {
   computed: {
     itemIsInCart() {
       return this.cartItems.some(item => item.id === this.$route.params.productId);
+    }
+  },
+  watch: {
+    async user(newUserValue) {
+      if (newUserValue) {
+        const cartResponse = await axios.get(`/api/users/${newUserValue.uid}/cart`);
+        const cartItems = cartResponse.data;
+        this.cartItems = cartItems;
+      }
     }
   },
   methods: {
@@ -67,9 +77,11 @@ export default {
     const product = response.data;
     this.product = product;
 
-    const cartResponse = await axios.get('/api/users/12345/cart');
-    const cartItems = cartResponse.data;
-    this.cartItems = cartItems;
+    if (this.user) {
+      const cartResponse = await axios.get(`/api/users/${this.user.uid}/cart`);
+      const cartItems = cartResponse.data;
+      this.cartItems = cartItems;
+    }
   }
 }
 </script>
