@@ -47,12 +47,22 @@ export default {
         handleCodeInApp: true,
       }
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+      alert('A login link was sent to the email you provided');
+      window.localStorage.setItem('emailForSignIn', email);
     }
   },
   components: {
     NotFoundPage
   },
   async created() {
+    const auth = getAuth();
+    if (isSignInWithEmailLink(auth, window.location.href)) {
+      const email = window.localStorage.getItem('emailForSignIn');
+      await signInWithEmailLink(auth, email, window.location.href);
+      alert('Successfully signed in!');
+      window.localStorage.removeItem('emailForSignIn');
+    }
+
     const response = await axios.get(`/api/products/${this.$route.params.productId}`);
     const product = response.data;
     this.product = product;
