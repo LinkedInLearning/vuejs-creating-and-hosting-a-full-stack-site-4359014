@@ -80,6 +80,11 @@ h1 {
   margin-top: 16px;
 }
 
+.sign-in {
+  width: 100%;
+  margin-top: 16px;
+}
+
 .price {
   position: absolute;
   top: 24px;
@@ -92,6 +97,7 @@ h1 {
 
 .grey-button {
   background-color: #888;
+  width: 100%;
 }
 
 .nav-bar {
@@ -120,6 +126,18 @@ h1 {
   margin: 0;
 }
 
+.nav-buttons-wrap {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.nav-buttons-wrap {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
 .cart-link {
   position: absolute;
   right: 16px;
@@ -128,7 +146,7 @@ h1 {
 
 .grid-wrap {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 16px;
