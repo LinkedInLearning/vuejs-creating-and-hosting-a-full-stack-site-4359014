@@ -1,7 +1,10 @@
 # Vue.js: Creating and Hosting a Full-Stack Site
-This is the repository for the LinkedIn Learning course `Vue.js: Creating and Hosting a Full-Stack Site`. The full course is available from [LinkedIn Learning][lil-course-url].
+This is the repository for the LinkedIn Learning course Vue.js: Creating and Hosting a Full-Stack Site. The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
+![Vue.js: Creating and Hosting a Full-Stack Site][lil-thumbnail-url] 
+
+Do you have Vue.js front-end capabilities, but lack familiarity with the server side? Would you like to develop the skills needed to build full-stack applications? In this course, instructor Shaun Wassell helps you enhance your development tool kit by showing how to leverage your existing Vue.js skills to build a full-stack ecommerce site. Shaun guides you through the process, showing how to use Vue.js to build a simple front end; Node.js and MongoDB to construct the back end; Axios to communicate between the front and back ends; add authentication with Firebase Authentication; and finally, how to take it live. Along the way, learn how to work with different tools and frameworks to correctly configure your site, including Postman and Express.
+
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
@@ -20,15 +23,13 @@ To resolve this issue:
     Add changes to git using this command: git add .
 	Commit changes using this command: git commit -m "some message"
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
 
+### Instructor
 
-[0]: # (Replace these placeholder URLs with actual course URLs)
+Shaun Wassell 
+                                                   
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/shaun-wassell).
 
+[lil-course-url]: https://www.linkedin.com/learning/vue-js-creating-and-hosting-a-full-stack-site-21646902?dApp=59033956
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/C560DAQFV3JgS5gmX0g/learning-public-crop_675_1200/0/1677892627519?e=2147483647&v=beta&t=mygA_XW7esiHrzMdi5mf72a0S7EFH780xDIlnAWWkS4
