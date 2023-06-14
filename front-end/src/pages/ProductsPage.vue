@@ -1,24 +1,17 @@
 <template>
   <h1>Products</h1>
-  <div class="grid-wrap">
-    <div 
-      class="product-item"
-      v-for="product in products"
-      :key="product.id"
-    >
-      <img :src="product.imageName" />
-      <h3 class="produce-name">{{ product.name }}</h3>
-      <p class="product-price">{{ product.price }}</p>
-      <button>View Details</button>
-    </div>
-  </div>
+  <ProductList :products="products" />
 </template>
 
 <script>
+import ProductList from '@/components/ProductsList.vue'
 import { products } from '@/temp-data';
 
 export default {
   name: "ProductsPage",
+  components: {
+    ProductList
+  },
   data(){
     return {
       products,
