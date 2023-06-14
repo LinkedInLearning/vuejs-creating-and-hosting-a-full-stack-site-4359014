@@ -7,6 +7,27 @@ import delicateBottle from "./assets/delicate-bottle.webp";
 import mediumBottle from "./assets/medium-bottle.webp";
 import boldBottle from "./assets/bold-bottle.webp";
 
+export const cartItems = [
+  {
+    id: "123",
+    name: "Basil",
+    price: "$26.00",
+    imageName: basilBottle,
+  },
+  {
+    id: "234",
+    name: "Lemon",
+    price: "$26.00",
+    imageName: lemonBottle,
+  },
+  {
+    id: "345",
+    name: "Garlic",
+    price: "$26.00",
+    imageName: garlicBottle,
+  },
+];
+
 export const products = [
   {
     id: "123",
