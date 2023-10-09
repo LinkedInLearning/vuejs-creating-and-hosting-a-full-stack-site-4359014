@@ -1,7 +1,7 @@
 <template>
   <div 
       class="product-container"
-      v-for="product in cartItems"
+      v-for="product in products"
       :key="product.id"
       >
       <img class="product-image" :src="product.imageName"/>
@@ -17,6 +17,6 @@
 <script>
 export default {
   name:"ShoppingCartList",
-  props:['cartItems']
+  props:['products']
 }
 </script>
