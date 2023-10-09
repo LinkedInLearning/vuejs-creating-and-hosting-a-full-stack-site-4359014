@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar">
-    <RouterLink to="products" class="products-link">
+    <RouterLink to="/products" class="products-link">
       <div class="logo-wrap">
         <img :src="logo"/>
       </div>
