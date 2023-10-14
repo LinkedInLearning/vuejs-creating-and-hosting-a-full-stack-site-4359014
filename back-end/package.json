@@ -5,14 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "npx nodemon --exec npx babel-node src/server.js"
+    "dev": "npx nodemon --exec npx babel-node src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.23.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^6.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",

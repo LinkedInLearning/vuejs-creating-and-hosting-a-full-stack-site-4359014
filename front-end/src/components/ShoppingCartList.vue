@@ -4,12 +4,12 @@
       v-for="product in products"
       :key="product.id"
       >
-      <img class="product-image" :src="product.imageName"/>
+      <img class="product-image" :src="product.imageUrl"/>
       <div class="product-details">
         <h3>{{ product.name }}</h3>
         <p>{{ product.price }}</p>
       </div>
-      <button class="remove-button">Remove from Cart</button>
+      <button @click="$emit('remove-from-cart',product.id)" class="remove-button">Remove from Cart</button>
       </div>
       <button class="checkout-button">Proceed to Checkout</button>
 </template>
