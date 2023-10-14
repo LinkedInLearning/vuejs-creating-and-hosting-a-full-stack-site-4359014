@@ -1,5 +1,5 @@
 <template>
-  <NavBar />
+  <NavBar :user="user" />
   <div class="page-wrap">
     <router-view :user="user"></router-view>  
   </div>
