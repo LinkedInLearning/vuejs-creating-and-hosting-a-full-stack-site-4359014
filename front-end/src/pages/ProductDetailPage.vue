@@ -5,9 +5,9 @@
       <div class="product-details">
         <h1>{{ product.name }}</h1>
         <h3 class="price">{{ product.price }}</h3>
-        <button @click="addToCart" class="add-to-cart" v-if="!itemIsInCart">Add to Cart</button>
-        <button class="grey-button" v-if="itemIsInCart">Item is already in cart</button>
-        <button @click="signIn" class="sign-in" >Sign in to add to Cart</button>
+        <button @click="addToCart" class="add-to-cart" v-if="user && !itemIsInCart">Add to Cart</button>
+        <button class="grey-button" v-if="user && itemIsInCart">Item is already in cart</button>
+        <button @click="signIn" class="sign-in" v-if="!user" >Sign in to add to Cart</button>
       </div>
     </div>
   </div>
@@ -24,6 +24,7 @@ import NotFoundPage from './NotFoundPage.vue';
 
   export default {
       name: "ProductDetailPage",
+      props:['user'],
       data(){
         return {
           product: {},
@@ -34,6 +35,15 @@ import NotFoundPage from './NotFoundPage.vue';
       computed: {
         itemIsInCart(){
           return this.cartItems.some(item => item.id === this.product.id);
+        }
+      },
+      watch: {
+        async user(newUserValue){
+          if (newUserValue) {
+            const cartResponse = await axios.get(`/api/users/${newUserValue.uid}/cart`);
+            const cartItems = cartResponse.data;
+            this.cartItems = cartItems;
+          }
         }
       },
       methods: {
@@ -69,9 +79,13 @@ import NotFoundPage from './NotFoundPage.vue';
         const product = response.data;
         this.product = product;
 
-        const cartResponse = await axios.get('/api/users/12345/cart');
+
+        if(this.user){
+          const cartResponse = await axios.get(`/api/users/${this.user.uid}/cart`);
         const cartItems = cartResponse.data;
         this.cartItems = cartItems;
+        }
+        
       }
   }
 </script>
