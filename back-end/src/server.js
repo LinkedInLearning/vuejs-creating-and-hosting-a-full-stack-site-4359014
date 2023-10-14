@@ -20,6 +20,10 @@ async function start(){
 
   app.use('/images',express.static(path.join(__dirname,'../assets')));
 
+  app.use(express.static(
+    path.resolve(__dirname, '../dist'),
+    {maxAge:'1y', etag:false},
+  ));
 
   app.get('/hello',async (req,res) => {
 
@@ -86,9 +90,14 @@ async function start(){
     res.json(populatedCart);
   })
 
+  app.get('*', (req,res)=>{
+    res.sendFile(path.join(__dirname, '../dist/index.html'))
+  });
 
-  app.listen(8000, ()=>{
-  console.log('Servers is listening on port 8000')
+  const port = process.env.PORT || 8000;
+
+  app.listen(port, ()=>{
+  console.log('Servers is listening on' + port)
 
   })  
 

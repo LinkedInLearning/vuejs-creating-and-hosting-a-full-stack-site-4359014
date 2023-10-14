@@ -55,7 +55,7 @@ import NotFoundPage from './NotFoundPage.vue';
           const email = prompt('Please enter your email address');
           const auth = getAuth();
           const actionCodeSettings = {
-            url: `https://cuddly-space-orbit-xgw6457pvvv3pqj7-8080.app.github.dev/products/${this.$route.params.productId}`,
+            url: `https://full-stack-vue-deployment-6sq8.onrender.com/products/${this.$route.params.productId}`,
             handleCodeInApp: true
           }
           await sendSignInLinkToEmail(auth, email, actionCodeSettings);
