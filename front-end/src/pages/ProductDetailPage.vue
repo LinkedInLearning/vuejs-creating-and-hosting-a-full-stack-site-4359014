@@ -7,6 +7,7 @@
         <h3 class="price">{{ product.price }}</h3>
         <button @click="addToCart" class="add-to-cart" v-if="!itemIsInCart">Add to Cart</button>
         <button class="grey-button" v-if="itemIsInCart">Item is already in cart</button>
+        <button @click="signIn" class="sign-in" >Sign in to add to Cart</button>
       </div>
     </div>
   </div>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import {getAuth, sendSignInLinkToEmail, isSignInWithEmailLink, signInWithEmailLink} from 'firebase/auth';
 import axios from 'axios'
 import NotFoundPage from './NotFoundPage.vue';
 
@@ -38,12 +40,31 @@ import NotFoundPage from './NotFoundPage.vue';
         async addToCart() {
           await axios.post('/api/users/12345/cart', {id: this.$route.params.productId});
           alert('Successfully added item to cart!');
+        },
+        async signIn(){
+          const email = prompt('Please enter your email address');
+          const auth = getAuth();
+          const actionCodeSettings = {
+            url: `https://cuddly-space-orbit-xgw6457pvvv3pqj7-8080.app.github.dev/products/${this.$route.params.productId}`,
+            handleCodeInApp: true
+          }
+          await sendSignInLinkToEmail(auth, email, actionCodeSettings);
+          alert(`An email has been sent to ${email}. Please click the link in the email to sign in.`);
+          window.localStorage.setItem('emailForSignIn', email);
         }
       },
       components:{
         NotFoundPage
       },
       async created() {
+        const auth = getAuth();
+        if(isSignInWithEmailLink(auth,window.location.href)){
+          const email = window.localStorage.getItem('emailForSignIn');
+          await signInWithEmailLink(auth, email, window.location.href);
+          alert('Successfully signed in!')
+          window.localStorage.removeItem('emailForSignIn');
+        }
+
         const response = await axios.get(`/api/products/${this.$route.params.productId}`);
         const product = response.data;
         this.product = product;
