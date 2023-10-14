@@ -31,6 +31,7 @@ export default {
     signOut(){
       const auth = getAuth();
       signOut(auth);
+      alert('Successfully signed out!')
     }
   }
 }
