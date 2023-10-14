@@ -99,7 +99,7 @@ async function start(){
   app.listen(port, ()=>{
   console.log('Servers is listening on port' + port)
 
-  })  
+  });
 
 };
 
