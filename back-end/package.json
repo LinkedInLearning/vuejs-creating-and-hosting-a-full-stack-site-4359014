@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon --exec npx babel-node src/server.js"
+    "dev": "npx nodemon --exec npx babel-node src/server.js",
+    "start": "node src/server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd back-end && npm run build",
   },
   "keywords": [],
   "author": "",
