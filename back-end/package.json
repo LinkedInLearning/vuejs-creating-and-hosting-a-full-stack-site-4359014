@@ -5,12 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon --exec npx babel-node src/server.js",
-    "start": "node src/server.js",
-    "build": "npm run build:back-end && npm run build:server",
-    "build:client": "cd back-end && npm run build",
-    "build:back-end": "cd back-end && npm run build",
-    "build:server": "cd back-end && npm run build"
+    "dev": "npx nodemon --exec npx babel-node src/server.js"
   },
   "keywords": [],
   "author": "",
