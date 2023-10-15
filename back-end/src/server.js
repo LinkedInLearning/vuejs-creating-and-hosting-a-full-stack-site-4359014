@@ -9,7 +9,8 @@ import path from 'path';
 
 
 async function start(){
-  const url = `mongodb+srv://hminagawa:12345@cluster0.unpzs3v.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`
+  const MongoDbPass = process.env.FSV_DB_PASS;
+  const url = `mongodb+srv://hminagawa:${MongoDbPass}@cluster0.unpzs3v.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp`
   const client = new MongoClient(url)
 
   await client.connect();
