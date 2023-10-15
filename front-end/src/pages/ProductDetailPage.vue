@@ -55,7 +55,7 @@ import NotFoundPage from './NotFoundPage.vue';
           const email = prompt('Please enter your email address');
           const auth = getAuth();
           const actionCodeSettings = {
-            url: `https://full-stack-vue-hminagawa.onrender.com/${this.$route.params.productId}`,
+            url: `https://full-stack-vue-hminagawa.onrender.com/products/${this.$route.params.productId}`,
             handleCodeInApp: true
           }
           await sendSignInLinkToEmail(auth, email, actionCodeSettings);
