@@ -23,8 +23,8 @@ async function start(){
 
   app.use(express.static(
     path.resolve(__dirname, '../dist'),
-    {maxAge:'1y', etag:false},
-  ));
+    {maxAge:'1y', etag:false}
+  ))
 
   app.get('/hello',async (req,res) => {
 
@@ -92,13 +92,14 @@ async function start(){
   })
 
   app.get('*', (req,res)=>{
-    res.sendFile(path.join(__dirname, '../dist/index.html'))
-  });
+    res.sendFile(path.join(__dirname,'../dist/index.html'));
+  }
+  );
 
   const port = process.env.PORT || 8000;
 
   app.listen(port, ()=>{
-  console.log('Servers is listening on port' + port)
+  console.log('Servers is listening on port' + port);
 
   });
 
