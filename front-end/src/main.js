@@ -7,12 +7,22 @@ import ProductsPage from './pages/ProductsPage.vue';
 import ProductDetailPage from './pages/ProductDetailPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
 
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  // COPY AND PASTE YOUR FIREBASE CONFIG INFO HERE
+  apiKey: "AIzaSyCK1mEvdZpDtSJPcNGIAXVwtr1X4uyput8",
+  authDomain: "wine-shop-31466.firebaseapp.com",
+  projectId: "wine-shop-31466",
+  storageBucket: "wine-shop-31466.appspot.com",
+  messagingSenderId: "814423454199",
+  appId: "1:814423454199:web:a23c6ab19a5e9e19db3ef2"
 };
 
+// Initialize Firebase
 initializeApp(firebaseConfig);
 
 createApp(App)
@@ -27,6 +37,9 @@ createApp(App)
   }, {
     path: '/products/:productId',
     component: ProductDetailPage,
+  }, {
+    path: '/',
+    redirect: '/products',
   }, {
     path: '/:pathMatch(.*)*',
     component: NotFoundPage,
