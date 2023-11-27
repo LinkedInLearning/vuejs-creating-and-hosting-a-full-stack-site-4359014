@@ -53,7 +53,7 @@ export default {
       const email = prompt('Please enter your email to sign in:');
       const auth = getAuth();
       const actionCodeSettings = {
-        url: `https://shaunwa-cautious-space-happiness-5v76p774rw63j6w-8080.preview.app.github.dev/products/${this.$route.params.productId}`,
+        url: `https://opulent-xylophone-j79xpjgr45j2pj6x-8080.app.github.dev/products/${this.$route.params.productId}`,
         handleCodeInApp: true,
       }
       await sendSignInLinkToEmail(auth, email, actionCodeSettings);
